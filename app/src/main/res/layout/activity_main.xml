@@ -1,0 +1,43 @@
+<?xml version="1.0" encoding="utf-8"?>
+<LinearLayout xmlns:android="http://schemas.android.com/apk/res/android"
+    xmlns:app="http://schemas.android.com/apk/res-auto"
+    xmlns:tools="http://schemas.android.com/tools"
+    android:layout_width="match_parent"
+    android:layout_height="match_parent"
+    android:orientation="vertical"
+    android:id="@+id/main"
+    tools:context="com.test.MainActivity">
+
+    <Button
+        android:id="@+id/refresh"
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content"
+        android:text="刷新" />
+
+    <WebView
+        android:id="@+id/web"
+        android:layout_width="match_parent"
+        android:layout_height="500px"
+        android:background="#f6f6f6"></WebView>
+
+
+    <com.test.ninegrid.NineGridlayout
+
+        android:id="@+id/ninegrid"
+        android:layout_width="100px"
+        android:layout_height="100px">
+
+
+    </com.test.ninegrid.NineGridlayout>
+      <GridView
+          android:background="@color/colorAccent"
+          android:id="@+id/gridview"
+
+          android:numColumns="3"
+          android:layout_width="match_parent"
+          android:layout_height="800px">
+
+
+      </GridView>
+
+</LinearLayout>
