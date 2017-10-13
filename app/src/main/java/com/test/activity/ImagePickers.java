@@ -1,4 +1,4 @@
-package com.test;
+package com.test.activity;
 
 import android.app.Activity;
 import android.net.Uri;
@@ -7,6 +7,7 @@ import android.widget.ImageView;
 import com.lzy.imagepicker.loader.ImageLoader;
 import com.squareup.picasso.MemoryPolicy;
 import com.squareup.picasso.Picasso;
+import com.test.R;
 
 import java.io.File;
 

@@ -3,7 +3,6 @@ package com.test;
 import android.content.Intent;
 import android.support.v7.app.AppCompatActivity;
 import android.os.Bundle;
-import android.text.Layout;
 import android.util.Log;
 import android.view.View;
 import android.webkit.JavascriptInterface;
@@ -14,17 +13,14 @@ import android.webkit.WebView;
 import android.webkit.WebViewClient;
 import android.widget.Button;
 import android.widget.GridView;
-import android.widget.LinearLayout;
 import android.widget.Toast;
 
 import com.lzy.imagepicker.ImagePicker;
 import com.lzy.imagepicker.bean.ImageItem;
 import com.lzy.imagepicker.ui.ImageGridActivity;
 import com.lzy.imagepicker.view.CropImageView;
-import com.tencent.qcloud.network.exception.QCloudException;
 import com.test.ninegrid.Image;
 import com.test.ninegrid.NineGridlayout;
-import com.test.testCos.MyCos;
 
 import java.util.ArrayList;
 
@@ -42,6 +38,7 @@ public class MainActivity extends AppCompatActivity {
     private NineGridlayout nineGridlayout;
     GridViewAdapter adapter;
     private GridView gridView;
+
     @Override
     protected void onCreate(Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
@@ -158,7 +155,6 @@ public class MainActivity extends AppCompatActivity {
                 Toast.makeText(this, "没有数据", Toast.LENGTH_SHORT).show();
             }
         }
-
 
     }
 }
