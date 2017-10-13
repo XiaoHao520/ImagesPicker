@@ -83,6 +83,10 @@
             right: 0;
             top:0;
         }
+
+
+
+
     </style>
 </head>
 
@@ -92,7 +96,7 @@
     <div data-role="header" style="text-align: center;height: 40px;line-height: 40px">
         <span style="position: absolute;left: 10px;top: 0;">返回</span>
         <span>随后一发</span>
-        <span style="position: absolute;right: 10px;top: 0;">发布</span>
+        <span id="send" style="position: absolute;right: 10px;top: 0;">发布</span>
     </div>
 
     <div data-role="content" style="position: relative;min-height: 500px">
@@ -116,12 +120,16 @@
 </div>
 
 <script type="text/javascript">
+
+var numOfImg=0;
     function appendImage(json) {
     console.log(json);
      var images=document.getElementById("images");
       var add=document.getElementById("add");
         var jsonObj=$.parseJSON(json);
         $.each(jsonObj,function (i,obj) {
+
+
             var li=document.createElement("li");
             li.setAttribute("id","li"+i);
             var img=document.createElement("img");
@@ -129,20 +137,51 @@
                del.setAttribute("id",i);
             del.setAttribute("class","del");
             img.setAttribute("src",obj.img);
-            console.log(i);
+
             li.appendChild(img);
             li.appendChild(del);
             images.insertBefore(li,add);
+            numOfImg++;
+
+             if(numOfImg==9){
+                $("#add").remove();
+            }
         });
+
+
+
+
+
     }
 
 
     $(".del").live("click",function () {
-
-    console.log(this.id);
-
+        numOfImg--;
         $("#li"+this.id).remove();
+        window.imagePicker.delImage(this.id);
+        if($("#add").length<=0){
+             var li=document.createElement("li");
+             var img=document.createElement("img");
+             li.setAttribute("id","add");
+             img.setAttribute("src","https://ss0.bdstatic.com/94oJfD_bAAcT8t7mm9GUKT-xh_/timg?image&quality=100&size=b4000_4000&sec=1507297623&di=58df471348d2ccacda030d808dace8ed&src=http://f.hiphotos.baidu.com/baike/w=268/sign=792273edf9edab6474724ac6cf36af81/a08b87d6277f9e2fda25102e1d30e924b899f380.jpg");
+             li.appendChild(img);
+             $("#images").append(li);
+         }
+
     });
+     $("#add").live("click",function () {
+       window.imagePicker.openAlbum('openAlbum');
+    });
+
+       $("#send").live("click",function(){
+        //记得用胡信息也要跟着上传；
+
+        window.imagePicker.send();
+
+
+       });
+
+
 </script>
 
 </body>

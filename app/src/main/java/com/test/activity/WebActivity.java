@@ -13,11 +13,14 @@ import android.webkit.WebViewClient;
 import android.widget.Toast;
 
 import com.alibaba.fastjson.JSON;
+import com.alibaba.fastjson.annotation.JSONType;
 import com.lzy.imagepicker.ImagePicker;
 import com.lzy.imagepicker.bean.ImageItem;
 import com.lzy.imagepicker.ui.ImageGridActivity;
 import com.lzy.imagepicker.view.CropImageView;
+import com.tencent.qcloud.network.exception.QCloudException;
 import com.test.*;
+import com.test.upload.MyCos;
 
 import java.util.ArrayList;
 import java.util.HashMap;
@@ -31,6 +34,7 @@ public class WebActivity extends AppCompatActivity {
     private static String url = "http://39.108.178.40/study/public/index.php/mobile/index";
     private static Map<String,String> imagesMap = new ArrayMap<String, String>();
      private static String json=null;
+    private static List<Map<String,String>> imagesList;
     @Override
     protected void onCreate(Bundle savedInstanceState) {
         this.requestWindowFeature(Window.FEATURE_NO_TITLE);
@@ -49,8 +53,6 @@ public class WebActivity extends AppCompatActivity {
         notesWebView.setWebViewClient(new WebViewClient() {
             @Override
             public boolean shouldOverrideUrlLoading(WebView view, WebResourceRequest request) {
-
-
                 return true;
             }
         });
@@ -82,7 +84,6 @@ public class WebActivity extends AppCompatActivity {
                 imagepicker.setImageLoader(new com.test.ImagePickers());
                 imagepicker.setShowCamera(true);
                 imagepicker.setSaveRectangle(true);
-
                 imagepicker.setSelectLimit(9);
                 imagepicker.setStyle(CropImageView.Style.RECTANGLE);
                 imagepicker.setFocusWidth(800);
@@ -106,6 +107,30 @@ public class WebActivity extends AppCompatActivity {
         }
 
 
+        @JavascriptInterface
+        public void send() throws QCloudException {
+            MyCos cos=new MyCos(getApplicationContext());
+            System.out.println("this is send");
+            for (Map<String,String> map:imagesList) {
+                System.out.println(map.get("img"));
+                cos.fileUpload(map.get("img"));
+
+            }
+
+
+        }
+
+        @JavascriptInterface
+        public void delImage(String num){
+
+            System.out.println("删除图片:"+num);
+            imagesList.remove(Integer.parseInt(num));
+
+
+
+        }
+
+
     }
 
 
@@ -117,7 +142,7 @@ public class WebActivity extends AppCompatActivity {
             if (data != null && requestCode == IMAGE_PICKER) {
                 ArrayList<ImageItem> images = (ArrayList<ImageItem>) data.getSerializableExtra(ImagePicker.EXTRA_RESULT_ITEMS);
 
-                List<Map<String,String>>imagesList=new ArrayList<Map<String, String>>();
+             imagesList=new ArrayList<Map<String, String>>();
                 for (int i = 0; i < images.size(); i++) {
 
                     Map<String,String> map=new HashMap<>();
