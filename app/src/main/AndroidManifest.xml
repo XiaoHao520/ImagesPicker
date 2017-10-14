@@ -15,18 +15,20 @@
         android:roundIcon="@mipmap/ic_launcher_round"
         android:supportsRtl="true"
         android:theme="@style/AppTheme">
-        <activity android:name=".MainActivity"></activity>
+        <activity android:name=".MainActivity" />
         <activity
             android:name="com.lzy.imagepicker.ui.ImagePreviewDelActivity"
             android:theme="@style/ImagePickerThemeFullScreen" />
         <activity android:name=".activity.WebActivity">
+
+        </activity>
+        <activity android:name=".activity.MakeNotesActivity" />
+        <activity android:name=".imagepicker.ImagePickerActivity">
             <intent-filter>
                 <action android:name="android.intent.action.MAIN" />
-
                 <category android:name="android.intent.category.LAUNCHER" />
             </intent-filter>
         </activity>
-        <activity android:name=".activity.MakeNotesActivity"></activity>
     </application>
 
 </manifest>

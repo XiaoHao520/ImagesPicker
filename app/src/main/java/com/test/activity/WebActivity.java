@@ -154,12 +154,9 @@ public class WebActivity extends AppCompatActivity {
 
                 System.out.println(json);
 
-
             } else {
                 Toast.makeText(this, "没有数据", Toast.LENGTH_SHORT).show();
             }
-
-
         }
     }
 

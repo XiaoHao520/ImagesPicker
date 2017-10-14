@@ -64,7 +64,7 @@ public class MyCos {
         final PutObjectResult putObjectResult = cosXmlService.putObject(putObjectRequest);
 
 
-//使用同步方法上传
+         //使用同步方法上传
 
 
         //上传失败， 返回httpCode 不在【200，300）之内；

@@ -2,7 +2,6 @@
 <project version="4">
   <component name="ProjectModuleManager">
     <modules>
-      <module fileurl="file://$PROJECT_DIR$/ImagesPicker.iml" filepath="$PROJECT_DIR$/ImagesPicker.iml" />
       <module fileurl="file://$PROJECT_DIR$/TestWebVIew.iml" filepath="$PROJECT_DIR$/TestWebVIew.iml" />
       <module fileurl="file://$PROJECT_DIR$/app/app.iml" filepath="$PROJECT_DIR$/app/app.iml" />
     </modules>
